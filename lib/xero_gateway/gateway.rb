@@ -467,6 +467,12 @@ module XeroGateway
       parse_response(response_xml, {}, {:request_signature => 'GET/tax_rates'})
     end
 
+    def get_report(report_name, request_params = {})
+      response_xml = http_get(@client, "#{@xero_url}/Reports/#{report_name}", request_params)
+      #parse_response(response_xml, {:request_params => request_params}, {:request_signature => 'GET/report'})
+    end
+
+
     private
 
     def get_contact(contact_id = nil, contact_number = nil)      
@@ -475,6 +481,7 @@ module XeroGateway
 
       parse_response(response_xml, {:request_params => request_params}, {:request_signature => 'GET/contact'})
     end
+
     
     # Create or update a contact record based on if it has a contact_id or contact_number.
     def save_contact(contact)
