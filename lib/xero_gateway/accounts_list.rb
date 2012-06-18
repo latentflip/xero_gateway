@@ -63,6 +63,16 @@ module XeroGateway
           list
         end
       end
+      #
+      # Return a list of all accounts matching account_type.
+      def find_all_by_account_class(*account_classes)
+        account_classes.flatten!
+        raise AccountsListNotLoadedError unless loaded?
+        @accounts.inject([]) do | list, account |
+          list << account if account_classes.include?(account.account_class)
+          list
+        end
+      end
       
       # Return a list of all accounts matching tax_type.
       def find_all_by_tax_type(tax_type)
