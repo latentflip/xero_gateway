@@ -19,6 +19,10 @@ module XeroGateway
     private
     
       def http_request(client, method, url, body, params = {})
+        puts "Requesting #{url}"
+        if url == 'https://api.xero.com/api.xro/2.0/BankTransactions/5cfa1d81-a6bf-45e7-a7ff-bf20b0518e88'
+          raise 'This is not happening'
+        end
         # headers = {'Accept-Encoding' => 'gzip, deflate'}
 
         headers = { 'charset' => 'utf-8' }

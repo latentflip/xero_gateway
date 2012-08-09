@@ -211,6 +211,7 @@ module XeroGateway
           when "Contact" then invoice.contact = Contact.from_xml(element)
           when "Date" then invoice.date = parse_date(element.text)
           when "DueDate" then invoice.due_date = parse_date(element.text)
+          when "FullyPaidOnDate" then invoice.fully_paid_on = parse_date(element.text)
           when "Status" then invoice.invoice_status = element.text
           when "Reference" then invoice.reference = element.text
           when "LineAmountTypes" then invoice.line_amount_types = element.text
