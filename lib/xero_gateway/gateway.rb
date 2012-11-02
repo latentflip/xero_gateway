@@ -470,7 +470,6 @@ module XeroGateway
 
     def get_report(report_name, request_params = {})
       response_xml = http_get(@client, "#{@xero_url}/Reports/#{report_name}", request_params)
-      #parse_response(response_xml, {:request_params => request_params}, {:request_signature => 'GET/report'})
     end
 
 
