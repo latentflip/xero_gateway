@@ -26,7 +26,7 @@ module XeroGateway
           headers['Content-Type'] ||= "application/x-www-form-urlencoded"
         end
 
-        headers['Accept-Type'] = params.delete(:accept_type) if params[:accept_type]
+        headers['Accept'] = params.delete(:accept_type) if params[:accept_type]
 
         # HAX.  Xero completely misuse the If-Modified-Since HTTP header.
         headers['If-Modified-Since'] = params.delete(:ModifiedAfter).utc.strftime("%Y-%m-%dT%H:%M:%S") if params[:ModifiedAfter]
