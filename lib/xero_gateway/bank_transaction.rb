@@ -27,7 +27,7 @@ module XeroGateway
     attr_accessor :line_items_downloaded
 
     # accessible fields
-    attr_accessor :bank_transaction_id, :type, :date, :reference, :status, :contact, :line_items, :bank_account, :url, :is_reconciled
+    attr_accessor :bank_transaction_id, :type, :date, :reference, :status, :contact, :line_items, :bank_account, :url, :is_reconciled, :updated_date_utc
 
     def initialize(params = {})
       @errors ||= []
@@ -166,6 +166,7 @@ module XeroGateway
           # when "AmountPaid" then invoice.amount_paid = BigDecimal.new(element.text)
           # when "AmountCredited" then invoice.amount_credited = BigDecimal.new(element.text)
           # when "SentToContact" then invoice.sent_to_contact = (element.text.strip.downcase == "true")
+          when "UpdatedDateUTC" then bank_transaction.updated_date_utc = parse_utc_date_time(element.text)
           when "IsReconciled" then bank_transaction.is_reconciled = (element.text.strip.downcase == "true")
           when "Url" then bank_transaction.url = element.text
         end
