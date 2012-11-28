@@ -38,7 +38,7 @@ module XeroGateway
     attr_accessor :line_items_downloaded
   
     # All accessible fields
-    attr_accessor :invoice_id, :invoice_number, :invoice_type, :invoice_status, :date, :due_date, :reference, :line_amount_types, :currency_code, :line_items, :contact, :payments, :fully_paid_on, :amount_due, :amount_paid, :amount_credited, :sent_to_contact, :url, :sub_total, :total_tax, :total
+    attr_accessor :invoice_id, :invoice_number, :invoice_type, :invoice_status, :date, :due_date, :reference, :line_amount_types, :currency_code, :line_items, :contact, :payments, :fully_paid_on, :amount_due, :amount_paid, :amount_credited, :sent_to_contact, :url, :sub_total, :total_tax, :total, :updated_date_utc
 
     
     def initialize(params = {})
@@ -227,6 +227,7 @@ module XeroGateway
           when "AmountCredited" then invoice.amount_credited = BigDecimal.new(element.text)
           when "SentToContact" then invoice.sent_to_contact = (element.text.strip.downcase == "true")
           when "Url" then invoice.url = element.text
+          when "UpdatedDateUTC" then invoice.updated_date_utc = parse_utc_date_time(element.text)
         end
       end      
       invoice
