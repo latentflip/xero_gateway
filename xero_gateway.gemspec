@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name     = "xero_gateway-float"
-  s.version  = "2.0.16"
-  s.date     = "2012-11-02"
+  s.version  = "2.0.17"
+  s.date     = "2012-12-18"
   s.summary  = "Enables ruby based applications to communicate with the Xero API"
   s.email    = "tim@connorsoftware.com"
   s.homepage = "http://github.com/latentflip/xero_gateway"
