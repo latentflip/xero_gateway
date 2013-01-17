@@ -11,6 +11,7 @@ require "active_support/all"
 
 require File.join(File.dirname(__FILE__), 'oauth', 'oauth_consumer')
 
+require File.join(File.dirname(__FILE__), 'xero_gateway', 'xero_gateway_debug')
 require File.join(File.dirname(__FILE__), 'xero_gateway', 'http_encoding_helper')
 require File.join(File.dirname(__FILE__), 'xero_gateway', 'http')
 require File.join(File.dirname(__FILE__), 'xero_gateway', 'dates')

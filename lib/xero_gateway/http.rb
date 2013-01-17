@@ -4,18 +4,24 @@ module XeroGateway
     READ_TIMEOUT = 60 unless defined? READ_TIMEOUT
     ROOT_CA_FILE = File.join(File.dirname(__FILE__), 'ca-certificates.crt') unless defined? ROOT_CA_FILE
     
+    def log(str)
+      XeroGateway.log("HTTP : "+str)
+    end
     def http_get(client, url, extra_params = {})
+      log "get  | #{url} :: #{extra_params.inspect}"
       http_request(client, :get, url, nil, extra_params)
     end
 
     def http_post(client, url, body, extra_params = {})
+      log "post | #{url} :: #{extra_params.inspect}"
       http_request(client, :post, url, body, extra_params)
     end
 
     def http_put(client, url, body, extra_params = {})
+      log "put | #{url} :: #{extra_params.inspect}"
       http_request(client, :put, url, body, extra_params)
     end
-    
+
     private
     
       def http_request(client, method, url, body, params = {})
